@@ -12,7 +12,7 @@ class sale_order(models.Model):
 
     hsp_move_status = fields.Selection([('no','未发货'),('part_ship','部分发货'),('shipped','全部发货')],string='发货情况',default='no',compute='_compute_hsp_move_status')
     hsp_invoice_status = fields.Selection([('no','未开发票'),('invoiced','已开发票')],string='发票情况',default='no',compute='_compute_hsp_invoice_status')
-    hsp_payment_status = fields.Selection([('no','未完成收款'),('part_payment','部分付款'),('paymented','已收款')],string='收款情况',default='no',compute='_compute_hsp_payment_status')
+    hsp_payment_status = fields.Selection([('no','未完成收款'),('part_payment','部分收款'),('paymented','已收款')],string='收款情况',default='no',compute='_compute_hsp_payment_status')
 
     hsp_invoice_date = fields.Date(string='发票日期')
     hsp_invoice_ref = fields.Char(string='发票参考')
