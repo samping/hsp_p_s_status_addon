@@ -46,7 +46,7 @@ class purchase_order(models.Model):
                     invoice_ids = self.env['account.invoice'].sudo().search([('origin','=',purchase.name)])
                     for invoice in invoice_ids:
                         if invoice.state == 'paid' :
-                            sale.hsp_payment_status = 'paymented'
+                            purchase.hsp_payment_status = 'paymented'
 
     def _compute_hsp_invoice_status(self):
         for purchase in self:
