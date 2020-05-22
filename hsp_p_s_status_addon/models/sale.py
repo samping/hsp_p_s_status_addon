@@ -45,7 +45,7 @@ class sale_order(models.Model):
                     sale.hsp_payment_status = 'paymented'
                     invoice_ids = self.env['account.invoice'].sudo().search([('origin','=',sale.name)])
                     for invoice in invoice_ids:
-                        if invoice.state == 'open' or invoice.state == 'in_payment':
+                        if invoice.state in ('open','in_payment','draft','cancel'):
                             sale.hsp_payment_status = 'no'
 
     def _compute_hsp_invoice_status(self):
