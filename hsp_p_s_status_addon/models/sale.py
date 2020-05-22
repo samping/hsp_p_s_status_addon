@@ -42,11 +42,11 @@ class sale_order(models.Model):
                 if tem_qty_invoiced < tem_qty:
                     sale.hsp_payment_status = 'no'
                 elif tem_qty_invoiced == tem_qty:
-                    sale.hsp_payment_status = 'paymented'
+                    sale.hsp_payment_status = 'no'
                     invoice_ids = self.env['account.invoice'].sudo().search([('origin','=',sale.name)])
                     for invoice in invoice_ids:
-                        if invoice.state in ('open','in_payment','draft','cancel'):
-                            sale.hsp_payment_status = 'no'
+                        if invoice.state == 'paid' :
+                            sale.hsp_payment_status = 'paymented'
 
     def _compute_hsp_invoice_status(self):
         for sale in self:
